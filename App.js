@@ -29,35 +29,35 @@ export default function App() {
           <ScrollView>
             <Contador />
             <ListaCompras />
-              <KittenCard
-                style={{ marginBottom: 22 }}
-                image="https://placekitten.com/390/242"
-                title="Teste do primeiro gatinho"
-                buttonPress={() => {
-                  alert("Clicou no primeiro botão");
-                }}
-              >
-                <Text>
-                  Texto de apoio falando sobre o gatinho bonito
-                </Text>
-              </KittenCard>
-              <KittenCard
-                style={{ marginBottom: 22 }}
-                image="https://placekitten.com/390/246"
-                title="Teste do outro gatinho"
-                buttonPress={() => {
-                  alert("Clicou no gatinho");
-                }}
-              />
-              <KittenCard
-                style={{ marginBottom: 22 }}
-                image="https://placekitten.com/390/244"
-                title="Teste do terceiro"
-                text="Texto de apoio falando sobre o gatinho bonito"
-                buttonPress={() => {
-                  alert("Clicou no último");
-                }}
-              />
+            <KittenCard
+              style={{ marginBottom: 22 }}
+              image="https://placekitten.com/390/242"
+              title="Teste do primeiro gatinho"
+              buttonPress={() => {
+                alert("Clicou no primeiro botão");
+              }}
+            >
+              <Text>
+                Texto de apoio falando sobre o gatinho bonito
+              </Text>
+            </KittenCard>
+            <KittenCard
+              style={{ marginBottom: 22 }}
+              image="https://placekitten.com/390/246"
+              title="Teste do outro gatinho"
+              buttonPress={() => {
+                alert("Clicou no gatinho");
+              }}
+            />
+            <KittenCard
+              style={{ marginBottom: 22 }}
+              image="https://placekitten.com/390/244"
+              title="Teste do terceiro"
+              text="Texto de apoio falando sobre o gatinho bonito"
+              buttonPress={() => {
+                alert("Clicou no último");
+              }}
+            />
           </ScrollView>
         </SafeAreaView>
       </PaperProvider>

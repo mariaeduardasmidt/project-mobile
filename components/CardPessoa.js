@@ -4,10 +4,10 @@ import { Button } from "react-native-paper";
 
 export default function CardPessoa() {
   const [pessoa, setPessoa] = useState({
-    nome: "Lucas",
-    sobrenome: "Ferreira",
-    idade: 35,
-    email: "lucas.ferreira@satc.edu.br",
+    nome: "Maria Eduarda",
+    sobrenome: "Smidt",
+    idade: 20,
+    email: "m.eduardasmidt@gmail.com",
     cpf: null,
   });
 
@@ -18,8 +18,12 @@ export default function CardPessoa() {
       <Text style={styles.pessoaLabel}>
         Nome: {pessoa.nome} {pessoa.sobrenome}
       </Text>
-      <Text style={styles.pessoaLabel}>E-mail: {pessoa.email}</Text>
-      <Text style={styles.pessoaLabel}>Idade: {pessoa.idade}</Text>
+      <Text style={styles.pessoaLabel}>
+          E-mail: {pessoa.email}
+      </Text>
+      <Text style={styles.pessoaLabel}>
+          Idade: {pessoa.idade}
+      </Text>
       <View style={{ padding: 21 }}>
         <Button
           mode="contained"

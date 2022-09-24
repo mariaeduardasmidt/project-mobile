@@ -1,38 +1,79 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
+import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, SafeAreaView, ScrollView, View, Text } from "react-native";
+import { Provider as PaperProvider, Button } from "react-native-paper";
 
 import KittenCard from "./components/KittenCard";
+import ListaCompras from "./components/ListaCompras";
+
+function Contador() {
+  const [count, setCount] = useState(0);
+
+  return(
+    <View style={styles.contador}>
+      <Text style={styles.contadorLabel}>Você clicou {count}</Text>
+        <View style={{ padding: 21 }}>
+          <Button mode="contained" onPress={() => setCount(count + 1)}>
+            Clique aqui
+          </Button>
+        </View>
+    </View>
+  )
+}
 
 export default function App() {
   return (
     <PaperProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <StatusBar style="light" translucent={false}/>
+      <StatusBar style="auto" translucent={false} />
+        <SafeAreaView style={{ flex: 1 }}>
           <ScrollView>
-            <KittenCard 
-              title="Gatinho lindo!" 
-              text="Textinho sobre o gatinho."
-              buttonLabel="Saber sobre gatinho"
-              image="https://placekitten.com/390/240"
-            />
-            <KittenCard 
-              title="Gatinho fofo!" 
-              text="Textinho sobre o gatinho fofo."
-              image="https://placekitten.com/390/240"
-            />
-            <KittenCard 
-              title="Gatinho lindo e fofo!" 
-              text="Textinho sobre o gatinho."
-            />
+            <Contador />
+            <ListaCompras />
+              <KittenCard
+                style={{ marginBottom: 22 }}
+                image="https://placekitten.com/390/242"
+                title="Teste do primeiro gatinho"
+                buttonPress={() => {
+                  alert("Clicou no primeiro botão");
+                }}
+              >
+                <Text>
+                  Texto de apoio falando sobre o gatinho bonito
+                </Text>
+              </KittenCard>
+              <KittenCard
+                style={{ marginBottom: 22 }}
+                image="https://placekitten.com/390/246"
+                title="Teste do outro gatinho"
+                buttonPress={() => {
+                  alert("Clicou no gatinho");
+                }}
+              />
+              <KittenCard
+                style={{ marginBottom: 22 }}
+                image="https://placekitten.com/390/244"
+                title="Teste do terceiro"
+                text="Texto de apoio falando sobre o gatinho bonito"
+                buttonPress={() => {
+                  alert("Clicou no último");
+                }}
+              />
           </ScrollView>
-      </SafeAreaView>
-    </PaperProvider>
-  );
-}
+        </SafeAreaView>
+      </PaperProvider>
+    );
+  }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16
+    padding: 16,
   },
+  contador: {
+    padding: 16,
+    marginBottom: 21
+  },
+  contadorLabel: {
+    fontSize: 18,
+    textAlign: "center"
+  }
 });

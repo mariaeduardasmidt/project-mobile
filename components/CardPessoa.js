@@ -19,10 +19,10 @@ export default function CardPessoa() {
         Nome: {pessoa.nome} {pessoa.sobrenome}
       </Text>
       <Text style={styles.pessoaLabel}>
-          E-mail: {pessoa.email}
+        E-mail: {pessoa.email}
       </Text>
       <Text style={styles.pessoaLabel}>
-          Idade: {pessoa.idade}
+        Idade: {pessoa.idade}
       </Text>
       <View style={{ padding: 21 }}>
         <Button

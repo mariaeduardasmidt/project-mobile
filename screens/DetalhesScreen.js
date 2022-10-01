@@ -7,12 +7,19 @@ export default function DetalhesScreen({ navigation }) {
       <Text style={{ fontSize: 21, marginBottom: 16 }}>
         Outra tela, agora detalhes.
       </Text>
-        <Button mode="contained" style={{ marginBottom: 9 }} onPress={() => navigation.navigate('Contato')}>
-            Entrar em contato
-        </Button>
-        <Button mode="contained" onPress={() => navigation.goBack()}>
-            Voltar
-        </Button>
+      <Button 
+        mode="contained" 
+        style={{ marginBottom: 9 }} 
+        onPress={() => navigation.navigate('Contato')}
+      >
+        Entrar em contato
+      </Button>
+      <Button 
+        mode="contained" 
+        onPress={() => navigation.goBack()}
+      >
+        Voltar
+      </Button>
     </View>
   );
 }

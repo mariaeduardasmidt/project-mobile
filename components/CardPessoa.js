@@ -32,7 +32,7 @@ export default function CardPessoa() {
           }}
           style={{ marginBottom: 9 }}
         >
-          Mudar nome para Rafael
+          Mudar nome para Ana
         </Button>
         <Button
           mode="contained"

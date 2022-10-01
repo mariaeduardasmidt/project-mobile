@@ -13,7 +13,7 @@ export default function App() {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} options={{ title: "Bem-vindo!" }} />
           <Stack.Screen name="Detalhes" component={DetalhesScreen} />
           <Stack.Screen name="Contato" component={ContatoScreen} />
         </Stack.Navigator>

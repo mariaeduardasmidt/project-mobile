@@ -13,10 +13,18 @@ export default function ContatoScreen({ navigation }) {
         Voltar
       </Button>
       <Button 
-        mode="contained" 
+        mode="contained"
+        style={{ marginBottom: 9 }}
         onPress={() => navigation.navigate('Home')}
       >
         Voltar Home
+      </Button>
+      <Button 
+        mode="contained"
+        style={{ marginBottom: 9 }} 
+        onPress={() => navigation.navigate('Async')}
+      >
+        Ir para Async
       </Button>
     </View>
   );

@@ -4,7 +4,8 @@ Exemplos desenvolvidos em sala.
 
 ```bash
 Objetivo: Realizar e atualiza o repositório com os conhecimentos adquiridos em sala.
-Descrição: Telas com exemplos de Stack Navigation, listas e cards de componentes, AsyncStorage,
+Descrição: Telas com exemplos de Stack Navigation, listas e cards de componentes, persistência de dados
+com AsyncStorage e SQLite,
 entre outros.
 ```
 Desenvolvido por: Maria Eduarda Smidt da Silva  

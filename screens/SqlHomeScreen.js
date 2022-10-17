@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Alert, FlatList, PixelRatio, View, Text } from "react-native";
 import { List, Button } from "react-native-paper";
 
-/* Este componente reaproveitável irá representar e exibir os itens presentes na lista 
- * de compras do App. */
+import { executeSql } from "../db";
+
+  /* Este componente reaproveitável irá representar e exibir os itens presentes na lista 
+   * de compras do App. */
 
 function ProdutoItem({ item, onPress, onLongPress }) {
   const comprado = !!item?.comprado && item.comprado === "S";
@@ -24,7 +26,7 @@ function ProdutoItem({ item, onPress, onLongPress }) {
   );
 }
 
-/* Lida com listas vazias. */
+/* Onde lidamos com listas vazias. */
 
 function ListEmptyProdutos({ onEmptyPress }) {
   return (
@@ -43,12 +45,14 @@ export default function SqlHomeScreen({ route, navigation }) {
   const [lista, setLista] = useState([]);
 
   async function recuperaListaCompras() {
-    /* Implementa o SQLite. */
+    const rs = await executeSql("SELECT * FROM produtos ORDER BY comprado ASC");
+    setLista(rs.rows._array);
   }
 
   function excluirItem(id) {
     const _runDeleteQuery = async () => {
-    /* Implementa o SQLite. */
+      await executeSql("DELETE FROM produtos WHERE id = ?", [id]);
+      recuperaListaCompras();
     };
 
     Alert.alert(
@@ -67,11 +71,13 @@ export default function SqlHomeScreen({ route, navigation }) {
   }
 
   async function marcarComoNaoComprado(id) {
-    /* Implementa o SQLite. */
+    await executeSql("UPDATE produtos SET comprado = 'N' WHERE id = ?", [id]);
+    recuperaListaCompras();
   }
 
   async function marcarComoComprado(id) {
-    /* Implementa o SQLite. */
+    await executeSql("UPDATE produtos SET comprado = 'S' WHERE id = ?", [id]);
+    recuperaListaCompras();
   }
 
   /* O useEffect abaixo realiza a tarefa de monitorar novos itens presentes na lista. No momento
@@ -79,17 +85,14 @@ export default function SqlHomeScreen({ route, navigation }) {
    * que a lista deve ser atualizada, puxando assim possíveis novos itens e exibindo-os. */
 
   useEffect(() => {
-
   /* Caso identifique/receba um novo item, atualiza a lista de compras. */
-
-    if (!!route.params?.novoItem) {
+  if (!!route.params?.novoItem) {
       recuperaListaCompras();
     }
   }, [route.params?.novoItem]);
 
-  /* Esse useEffect roda o 'recuperaListaCompras' ao abrirmos a tela pela primeira vez. */
-
   useEffect(() => {
+  /* Esse useEffect roda o 'recuperaListaCompras' ao abrirmos a tela pela primeira vez. */
     recuperaListaCompras();
   }, []);
 
@@ -130,23 +133,23 @@ export default function SqlHomeScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   header: {
     backgroundColor: "#fff",
     paddingVertical: 9,
-    paddingHorizontal: 16,
+    paddingHorizontal: 16
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginTop: 6,
-    marginBottom: 12,
+    marginBottom: 12
   },
   textInfo: {
     fontSize: 13,
     lineHeight: 18,
-    marginBottom: 4,
+    marginBottom: 4
   },
   itemCircular: {
     backgroundColor: "rgba(231, 224, 236, 1)",
@@ -154,15 +157,18 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     paddingHorizontal: 11,
     borderRadius: 11,
-    overflow: "hidden",
+    overflow: "hidden"
   },
-  itemCircularText: { fontSize: 16, fontWeight: "500", color: "#333" },
+  itemCircularText: { 
+    fontSize: 16, 
+    fontWeight: "500", 
+    color: "#333"
+  },
   rowSeparator: {
     backgroundColor: "#cdcdcd",
-    /* Altura automática do separador. */
-    height: 1 / PixelRatio.get(),
+    height: 1 / PixelRatio.get()  /* Altura automática do separador. */
   },
   rowSeparatorHide: {
-    opacity: 0.0,
+    opacity: 0.0
   },
 });

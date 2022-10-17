@@ -22,7 +22,7 @@ export default function ContatoScreen({ navigation }) {
       <Button 
         mode="contained"
         style={{ marginBottom: 9 }} 
-        onPress={() => navigation.navigate('Async')}
+        onPress={() => navigation.navigate('AsyncTab')}
       >
         Ir para Async
       </Button>

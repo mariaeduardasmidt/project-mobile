@@ -9,9 +9,11 @@ import AsyncHomeScreen from "./screens/AsyncHomeScreen";
 import SqlHomeScreen from "./screens/SqlHomeScreen";
 import SqlAddScreen from "./screens/SqlAddScreen";
 
-import HomeScreen from "../app-mobile/screens/HomeScreen";
+import HomeScreen from "./screens/HomeScreen";
 import DetalhesScreen from "./screens/DetalhesScreen";
 import ContatoScreen from "./screens/ContatoScreen";
+import MoviesScreen from "./screens/MoviesScreen";
+import MovieViewScreen from "./screens/MovieViewScreen";
 
 /* Neste arquivo há a configuração central do App, junto do sistema de navegação que coordenará 
  * o fluxo entre telas. Estou utilizando o componente StackNavigator para armazenar e indicar cada
@@ -72,6 +74,29 @@ function SqlNavigator() {
   );
 }
 
+const StackMovies = createNativeStackNavigator();
+
+function MoviesNavigator() {
+  return (
+    <StackMovies.Navigator initialRouteName="Movies">
+      <StackMovies.Screen
+        name="Movies"
+        component={MoviesScreen}
+        options={({ navigation }) => ({
+          title: "Ex fetch",
+        })}
+      />
+      <StackMovies.Screen
+        name="MovieView"
+        component={MovieViewScreen}
+        options={{
+          title: "Carregando...",
+        }}
+      />
+    </StackMovies.Navigator>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 
 /* Essa função serve para customizar o navegador principal que é do tipo "BottomTab". Esse navegador 
@@ -90,6 +115,9 @@ function tabScreenOptions({ route }) {
       }
       else if (route.name === "SqlTab") {
         iconName = focused ? "database-plus" : "database-plus-outline";
+      }
+      else if (route.name === "MoviesTab") {
+        iconName = focused ? "movie-settings" : "movie-settings-outline";
       }
       else if (route.name === "Contato") {
         iconName = focused ? "database-plus" : "database-plus-outline";
@@ -120,11 +148,12 @@ export default function App() {
       <>
         <NavigationContainer>
           <Tab.Navigator screenOptions={tabScreenOptions}>
-            <Tab.Screen name="AsyncTab" component={AsyncNavigator} />
-            <Tab.Screen name="SqlTab" component={SqlNavigator} />
-            <Tab.Screen name="Contato" component={ContatoScreen} />
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Detalhes" component={DetalhesScreen} />
+            <Tab.Screen name="MoviesTab" component={MoviesNavigator} options={{ tabBarLabel: "Movies" }} />
+            <Tab.Screen name="SqlTab" component={SqlNavigator} options={{ tabBarLabel: "SQLite" }} />
+            <Tab.Screen name="AsyncTab" component={AsyncNavigator} options={{ tabBarLabel: "Async" }} />
+            <Tab.Screen name="Contato" component={ContatoScreen} options={{ tabBarLabel: "Contato" }} />
+            <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: "Home" }} />
+            <Tab.Screen name="Detalhes" component={DetalhesScreen} options={{ tabBarLabel: "Detalhes" }}/>
           </Tab.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />

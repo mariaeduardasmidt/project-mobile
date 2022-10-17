@@ -1,4 +1,5 @@
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { useState, useEffect } from "react";
+import { StyleSheet, TouchableOpacity, Keyboard, View, Text } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -52,17 +53,14 @@ export default function SqlAddScreen({ navigation }) {
         validationSchema={ProdutoSchema}
         onSubmit={async (values, actions) => {
           try {
-            const { insertId = null } = await executeSql("INSERT INTO produtos (name, qtd) VALUES(?, ?)", [
-              values.name,
-              values.qtd,
-            ]);
+            const rs = await executeSql("INSERT INTO produtos (name, qtd) VALUES(?, ?)", [values.name, values.qtd]);
+            navigation.navigate("SqlHome", { novoItem: rs.insertId });
 
             /* Após novos itens serem salvos na lista, os memos voltarão para a tela anterior.
              * No processo de retornar os itens para a tela anterior, é possível realizar o envio
              * de um parâmetro chave, informando que a tela anterior deve ser atualizada, já que agora
              * possuímos um novo item adicionado à lista. */
-    
-            navigation.navigate("SqlHome", { novoItem: true });
+
           } catch (err) {
             console.error(err);
           }

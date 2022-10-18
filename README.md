@@ -4,8 +4,8 @@
 Projeto realizado no curso de 'Desenvolvimento Mobile com React Native' disponibilizado pela organização de 'Cursos Livres' da UNISATC.
 
 ```bash
-Descrição: exemplos de Stack Navigation, listas e cards de componentes, persistência de dados com AsyncStorage e SQLite, ListItens,
-entre outros.
+Descrição: exemplos de Stack Navigation, listas e cards de componentes, persistência de dados com
+AsyncStorage e SQLite, ListItens, entre outros.
 ```
 
 <!-- INICIANDO -->

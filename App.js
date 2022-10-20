@@ -145,19 +145,16 @@ function tabScreenOptions({ route }) {
 export default function App() {
   return (
     <PaperProvider>
-      <>
         <NavigationContainer>
           <Tab.Navigator screenOptions={tabScreenOptions}>
-            <Tab.Screen name="MoviesTab" component={MoviesNavigator} options={{ tabBarLabel: "Movies" }} />
             <Tab.Screen name="SqlTab" component={SqlNavigator} options={{ tabBarLabel: "SQLite" }} />
+            <Tab.Screen name="MoviesTab" component={MoviesNavigator} options={{ tabBarLabel: "Movies" }} />
             <Tab.Screen name="AsyncTab" component={AsyncNavigator} options={{ tabBarLabel: "Async" }} />
             <Tab.Screen name="Contato" component={ContatoScreen} options={{ tabBarLabel: "Contato" }} />
             <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: "Home" }} />
-            <Tab.Screen name="Detalhes" component={DetalhesScreen} options={{ tabBarLabel: "Detalhes" }}/>
           </Tab.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
-      </>
     </PaperProvider>
   );
 }

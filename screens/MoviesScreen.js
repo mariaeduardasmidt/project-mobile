@@ -3,10 +3,11 @@ import { StyleSheet, TouchableHighlight, PixelRatio, FlatList, Image, View, Text
 import { Searchbar, ActivityIndicator } from "react-native-paper";
 
 function FilmeItem({ item, onPress }) {
-  // uma pequena checagem, nesta API se o filme tem um poster
-  // a variável .Poster além de preenchida tem que ser diferente
-  // do valor "N/A". Caso não tenha poster estou exibindo uma
-  // <View /> fake no local com fundo cinza
+
+  /* Teremos uma checagem na API de filmes. Nela, se o filme possui um poster registrado, a variável
+   * '.Poster' é preenchida e diferente do valor 'N/A'. Caso o filme não possua poster, exibimos uma
+   * <View /> vazia, para preenchimento do espaço do poster. */
+
   const temPoster = !!item.Poster && item.Poster !== "N/A";
 
   return (
@@ -28,7 +29,6 @@ function FilmeItem({ item, onPress }) {
   );
 }
 
-// lista vazia exibimos isso
 function ListEmptyFilmes({ onEmptyPress }) {
   return (
     <View style={{ paddingVertical: 26, paddingHorizontal: 16 }}>
@@ -47,36 +47,33 @@ export default function MoviesScreen({ navigation }) {
   const [busca, setBusca] = useState("spider man");
 
   async function carregaListaFilmes() {
-    // pequena verificação para verificar se o usuário inputou algo na busca
+
     if (!busca || busca.trim() === "") {
-      // se o usuário não informou nada no campo de busca podemos
-      // emitir um alert('xxx') com alguma mensagem ou simplesmente
-      // executar nada, como estou fazendo aqui
       return;
     }
 
-    // antes de iniciarmos a comunicação com o servidor iremos marcar como "carregando"
     setLoading(true);
 
     try {
-      // a função `fetch` e a responsável por estabelecermos uma conexão com o servidor
-      // ao final de seu retorno recebemos na variável `response` detalhes sobre o download
-      // nesta resposta da requisição podemos convertar para um formato compreensível para o JS
-      // usando a outra função .json()
+
+      /* A função 'fetch' é responsável por estabelecermos uma conexão com o servidor. Ao final de seu retorno 
+       * recebemos na variável 'response' os detalhes sobre o download. Nesta resposta, podemos convertê-la
+       * para um formato compreensível para o JS, utilizando outra função '.json()'. */
+
       const response = await fetch("https://www.omdbapi.com/?s=" + busca + "&apikey=1cd66749");
-      const dados = await response.json(); // traduzindo para o formato JSON
 
-      // uma vez que a requisição/resposta já foi tratada e agora está no formato JSON
-      // cabe a nós sabermos quais tipos de dado a API entrega, neste caso aqui entrega
-      // uma chave chamada `.Search` contendo a lista de filme encontrados.
-      // Jogamos essa lista para dentro da variavel-state lista afim de atualizar a tela
+      /* Traduz para o 'JSON'. */
+
+      const dados = await response.json();
+
+      /* Uma vez que a requisição/resposta já foi tratada e agora está no formato JSON, cabe a nós sabermos quais
+       * tipos de dado a API entrega. Neste caso aqui, recebemos uma chave chamada '.Search', que contém a lista de
+       * filmes encontrados. */
+
       setLista(dados.Search);
-
-      // se chegarmos até aqui teremos os dados recebidos em `dados` e podemos "esconder"
-      // o indicador de "carregando" de tela, basta setar como false:
       setLoading(false);
+
     } catch (err) {
-      // se chegar aqui é porque deu erro, e também temos que "tirar" o carregando
       setLoading(false);
     }
   }
@@ -141,7 +138,7 @@ const styles = StyleSheet.create({
   },
   rowSeparator: {
     backgroundColor: "#cdcdcd",
-    height: 1 / PixelRatio.get(), // altura automática do separador
+    height: 1 / PixelRatio.get(), /* Altura automática do separador. */
   },
   rowSeparatorHide: {
     opacity: 0.0,

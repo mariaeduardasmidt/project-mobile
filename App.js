@@ -14,15 +14,7 @@ import MoviesScreen from "./screens/MoviesScreen";
 import MovieViewScreen from "./screens/MovieViewScreen";
 import ContactScreen from "./screens/ContactScreen";
 
-/* Neste arquivo há a configuração central do App, junto do sistema de navegação que coordenará 
- * o fluxo entre telas. Estou utilizando o componente StackNavigator para armazenar e indicar cada
- * aba do App no createBottomTabNavigator. */
-
 const StackAsync = createNativeStackNavigator();
-
-/** Aqui possuímos a primeira Stack, responsável pela primeira aba do App. Nela aninham-se todas as
- *  telas que estão ao redor do fluxo de telas.
- **/
 
 function AsyncNavigator() {
   return (
@@ -39,9 +31,6 @@ function AsyncNavigator() {
 }
 
 const StackSql = createNativeStackNavigator();
-
-/* Aqui há a Stack da segunda aba do App, mesmo funcionamento da primeira, permitindo a
- * navegação entre todas as Stacks/abas possíveis. */
 
 function SqlNavigator() {
   return (
@@ -97,11 +86,6 @@ function MoviesNavigator() {
 
 const Tab = createBottomTabNavigator();
 
-/* Essa função serve para customizar o navegador principal que é do tipo "BottomTab". Esse navegador 
- *  do tipo 'tabs' = abas recebe parâmetros customizáveis, como ícone, por exemplo. Assim, é possível 
- *  setar e diferenciar ícones à aba que está aberta no momento, igualmente à cores, indicando em qual 
- *  tela o usuário está focado no momento. */
-
 function tabScreenOptions({ route }) {
   return {
     headerShown: false,
@@ -111,17 +95,17 @@ function tabScreenOptions({ route }) {
       if (route.name === "AsyncTab") {
         iconName = focused ? "database-arrow-down" : "database-arrow-down-outline";
       }
-      else if (route.name === "SqlTab") {
+      else if (route.name === "SqlHome") {
         iconName = focused ? "database-plus" : "database-plus-outline";
       }
-      else if (route.name === "MoviesTab") {
+      else if (route.name === "SqlAdd") {
         iconName = focused ? "movie-settings" : "movie-settings-outline";
       }
       else if (route.name === "Contato") {
         iconName = focused ? "database-plus" : "database-plus-outline";
       }
       else if (route.name === "Home") {
-        iconName = focused ? "database-plus" : "database-plus-outline";
+        iconName = focused ? "folder-heart" : "folder-heart-outline";
       }
       else if (route.name === "Detalhes") {
         iconName = focused ? "database-plus" : "database-plus-outline";
@@ -132,22 +116,14 @@ function tabScreenOptions({ route }) {
   };
 }
 
-/* A função 'App' é a principal em um aplicativo desenvolvido em Expo. Ela é a primeira
- * função a ser executada no momento que o aplicativo é aberto. Dessa forma, por ser a
- * função principal e primeira a ser executada, informarmos configurações iniciais de
- * navegadores, temas visuais e componentes complexos, como o 'react-native-paper', nessa tela.
- * 
- * A utilização do 'BottomTab Navigator' como navegador padrão, nos permite configurar
- * abaixo para que cada 'Tab.Screen' represente as abas do navegador principal do App. */
-
 export default function App() {
   return (
     <PaperProvider>
       <NavigationContainer>
         <Tab.Navigator screenOptions={tabScreenOptions}>
           <Tab.Screen name ="Home" component={Home} options={{ tabBarShowLabel: false}} />
-          <Tab.Screen name="MoviesTab" component={MoviesNavigator} options={{ tabBarShowLabel: false}} />
-          <Tab.Screen name="AsyncTab" component={AsyncNavigator} options={{ tabBarShowLabel: false}} />
+          <Tab.Screen name="AsyncHome" component={AsyncHomeScreen} options={{ tabBarShowLabel: false}} />
+          <Tab.Screen name="SqlAdd" component={SqlAddScreen} options={{ tabBarShowLabel: false}} />
           <Tab.Screen name="Contato" component={ContactScreen} options={{ tabBarShowLabel: false}} />
         </Tab.Navigator>
       </NavigationContainer>

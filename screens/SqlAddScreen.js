@@ -55,12 +55,6 @@ export default function SqlAddScreen({ navigation }) {
           try {
             const rs = await executeSql("INSERT INTO produtos (name, qtd) VALUES(?, ?)", [values.name, values.qtd]);
             navigation.navigate("SqlHome", { novoItem: rs.insertId });
-
-            /* Após novos itens serem salvos na lista, os memos voltarão para a tela anterior.
-             * No processo de retornar os itens para a tela anterior, é possível realizar o envio
-             * de um parâmetro chave, informando que a tela anterior deve ser atualizada, já que agora
-             * possuímos um novo item adicionado à lista. */
-
           } catch (err) {
             console.error(err);
           }

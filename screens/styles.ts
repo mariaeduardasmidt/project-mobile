@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     marginTop: 36,
-    marginBottom: 42
+    marginBottom: 32
   },
   listEmptyText: {
     color: '#1F1E25',

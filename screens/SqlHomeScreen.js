@@ -4,9 +4,6 @@ import { List, Button } from "react-native-paper";
 
 import { executeSql } from "../db";
 
-  /* Este componente reaproveitável irá representar e exibir os itens presentes na lista 
-   * de compras do App. */
-
 function ProdutoItem({ item, onPress, onLongPress }) {
   const comprado = !!item?.comprado && item.comprado === "S";
 
@@ -25,8 +22,6 @@ function ProdutoItem({ item, onPress, onLongPress }) {
     />
   );
 }
-
-/* Onde lidamos com listas vazias. */
 
 function ListEmptyProdutos({ onEmptyPress }) {
   return (
@@ -80,19 +75,13 @@ export default function SqlHomeScreen({ route, navigation }) {
     recuperaListaCompras();
   }
 
-  /* O useEffect abaixo realiza a tarefa de monitorar novos itens presentes na lista. No momento
-   * em que ele é acionado, a variável 'novoItem' é testada. Caso seu resultado seja 'true', sabemos
-   * que a lista deve ser atualizada, puxando assim possíveis novos itens e exibindo-os. */
-
   useEffect(() => {
-  /* Caso identifique/receba um novo item, atualiza a lista de compras. */
   if (!!route.params?.novoItem) {
       recuperaListaCompras();
     }
   }, [route.params?.novoItem]);
 
   useEffect(() => {
-  /* Esse useEffect roda o 'recuperaListaCompras' ao abrirmos a tela pela primeira vez. */
     recuperaListaCompras();
   }, []);
 

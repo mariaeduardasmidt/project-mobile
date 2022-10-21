@@ -14,10 +14,6 @@ let _db = null;
 
 export function executeSql(query, params = []) {
 
-  /* Esta é uma função atalho para a execução de códigos SQL que possuem apenas uma linha.
-   * a vantagen de uso dessa função, é que antes de rodarmos a 'query', ela irá verificar se
-   * a conexão com o Banco de Dados já foi estabelecida. */
-
   if (!_db) {
     openDB();
   }
@@ -38,12 +34,8 @@ export default function openDB() {
   if (!_db) {
     _db = SQLite.openDatabase(DATABASE_NAME);
 
-    /* No primeiro momento ao abrir a conexão, iremos tentar criar as tabelas. */
-
     _db.transaction(
       tx => {
-        /* Sendo um array de 'CREATE TABLE', iremos 'transicionar' uma vez para cada 'TABLE' a ser criada. */
-
         SQL_CREATE_ENTRIES.map(query => {
           tx.executeSql(query);
         });

@@ -3,11 +3,6 @@ import { StyleSheet, TouchableHighlight, PixelRatio, FlatList, Image, View, Text
 import { Searchbar, ActivityIndicator } from "react-native-paper";
 
 function FilmeItem({ item, onPress }) {
-
-  /* Teremos uma checagem na API de filmes. Nela, se o filme possui um poster registrado, a variável
-   * '.Poster' é preenchida e diferente do valor 'N/A'. Caso o filme não possua poster, exibimos uma
-   * <View /> vazia, para preenchimento do espaço do poster. */
-
   const temPoster = !!item.Poster && item.Poster !== "N/A";
 
   return (
@@ -55,20 +50,8 @@ export default function MoviesScreen({ navigation }) {
     setLoading(true);
 
     try {
-
-      /* A função 'fetch' é responsável por estabelecermos uma conexão com o servidor. Ao final de seu retorno 
-       * recebemos na variável 'response' os detalhes sobre o download. Nesta resposta, podemos convertê-la
-       * para um formato compreensível para o JS, utilizando outra função '.json()'. */
-
       const response = await fetch("https://www.omdbapi.com/?s=" + busca + "&apikey=1cd66749");
-
-      /* Traduz para o 'JSON'. */
-
       const dados = await response.json();
-
-      /* Uma vez que a requisição/resposta já foi tratada e agora está no formato JSON, cabe a nós sabermos quais
-       * tipos de dado a API entrega. Neste caso aqui, recebemos uma chave chamada '.Search', que contém a lista de
-       * filmes encontrados. */
 
       setLista(dados.Search);
       setLoading(false);

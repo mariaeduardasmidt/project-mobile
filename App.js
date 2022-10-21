@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "react-native";
 import { Provider as PaperProvider, IconButton } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -9,7 +9,7 @@ import AsyncHomeScreen from "./screens/AsyncHomeScreen";
 import SqlHomeScreen from "./screens/SqlHomeScreen";
 import SqlAddScreen from "./screens/SqlAddScreen";
 
-import HomeScreen from "./screens/HomeScreen";
+import { Home } from "./screens";
 import MoviesScreen from "./screens/MoviesScreen";
 import MovieViewScreen from "./screens/MovieViewScreen";
 import ContactScreen from "./screens/ContactScreen";
@@ -54,10 +54,9 @@ function SqlNavigator() {
           headerRight: () => (
             <IconButton
               style={{ marginTop: 0, marginRight: -12 }}
-              icon="plus-box"
+              icon="plus-circle"
               onPress={() => navigation.navigate("SqlAdd")}
-              size={28}
-              color="#333"
+              size={26}
             />
           ),
         })}
@@ -66,7 +65,7 @@ function SqlNavigator() {
         name="SqlAdd"
         component={SqlAddScreen}
         options={{
-          title: "Adicionando Item",
+          title: "Livros desejados",
         }}
       />
     </StackSql.Navigator>
@@ -144,16 +143,15 @@ function tabScreenOptions({ route }) {
 export default function App() {
   return (
     <PaperProvider>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={tabScreenOptions}>
-            <Tab.Screen name="SqlTab" component={SqlNavigator} options={{ tabBarLabel: "SQLite" }} />
-            <Tab.Screen name="MoviesTab" component={MoviesNavigator} options={{ tabBarLabel: "Movies" }} />
-            <Tab.Screen name="AsyncTab" component={AsyncNavigator} options={{ tabBarLabel: "Async" }} />
-            <Tab.Screen name="Contato" component={ContactScreen} options={{ tabBarLabel: "Contato" }} />
-            <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: "Home" }} />
-          </Tab.Navigator>
-        </NavigationContainer>
-        <StatusBar style="auto" />
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={tabScreenOptions}>
+          <Tab.Screen name ="Home" component={Home} options={{ tabBarShowLabel: false}} />
+          <Tab.Screen name="MoviesTab" component={MoviesNavigator} options={{ tabBarShowLabel: false}} />
+          <Tab.Screen name="AsyncTab" component={AsyncNavigator} options={{ tabBarShowLabel: false}} />
+          <Tab.Screen name="Contato" component={ContactScreen} options={{ tabBarShowLabel: false}} />
+        </Tab.Navigator>
+      </NavigationContainer>
+      <StatusBar style="auto" />
     </PaperProvider>
   );
 }

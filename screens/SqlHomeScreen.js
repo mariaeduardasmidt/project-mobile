@@ -13,7 +13,7 @@ function ProdutoItem({ item, onPress, onLongPress }) {
   return (
     <List.Item
       title={item.name}
-      titleStyle={{ fontWeight: "500", fontStyle: comprado ? "italic" : "normal", color: comprado ? "#666" : "#333" }}
+      titleStyle={{ fontWeight: "500", color: comprado ? "#696969" : "#333" }}
       style={{ padding: 16 }}
       onPress={onPress}
       onLongPress={onLongPress}
@@ -99,10 +99,8 @@ export default function SqlHomeScreen({ route, navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Lista de Compras</Text>
         <Text style={styles.textInfo}>
-          Neste exemplo contamos com duas telas, uma será de formulário e nesta aqui listaremos os itens já adicionados
-          na lista. Se clicar em um item da lista ele será marcado como comprado.
+          LISTA DE DESEJOS
         </Text>
       </View>
       <FlatList
@@ -136,7 +134,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   header: {
-    backgroundColor: "#fff",
     paddingVertical: 9,
     paddingHorizontal: 16
   },

@@ -69,27 +69,17 @@ export default function SqlAddScreen({ navigation }) {
         {({ handleChange, handleBlur, handleSubmit, setFieldValue, touched, errors, values }) => {
           return (
             <View style={styles.formContainer}>
-              <Text style={styles.title}>Adicionar item</Text>
               <MyTextInput
                 autoCorrect={false}
-                label="Produto desejado"
+                label="Adicione o livro"
                 onChangeText={handleChange("name")}
                 onBlur={handleBlur("name")}
                 value={values.name}
                 error={touched.name && errors.name}
               />
-              <MyQtdInput
-                label="Quantidade"
-                onChange={value => setFieldValue("qtd", value)}
-                value={values.qtd}
-                error={touched.qtd && errors.qtd}
-              />
               <Button onPress={handleSubmit} mode="contained" style={{ marginTop: 12 }}>
-                Adicionar na Lista
+                Confirmar
               </Button>
-              <View style={{ backgroundColor: "#fff", marginTop: 32, padding: 12 }}>
-                <Text style={{ fontSize: 18 }}>Dados do Formulário: {`\n\n` + JSON.stringify(values, null, 2)}</Text>
-              </View>
             </View>
           );
         }}

@@ -2,13 +2,13 @@ import { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Button } from "react-native-paper";
 
-export default function ListaCompras() {
+export default function ShopList() {
   const [lista, setLista] = useState([]);
 
   console.log(`debug`, lista);
 
   return (
-    <View style={styles.listaCompras}>
+    <View style={styles.shopList}>
       {lista.map(item => {
         return (
           <Text key={item} style={{ fontSize: 16, padding: 4 }}>
@@ -47,7 +47,7 @@ export default function ListaCompras() {
 }
 
 const styles = StyleSheet.create({
-  listaCompras: {
+  shopList: {
     padding: 16,
     borderWidth: 2,
     borderColor: "green",

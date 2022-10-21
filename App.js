@@ -10,10 +10,9 @@ import SqlHomeScreen from "./screens/SqlHomeScreen";
 import SqlAddScreen from "./screens/SqlAddScreen";
 
 import HomeScreen from "./screens/HomeScreen";
-import DetalhesScreen from "./screens/DetalhesScreen";
-import ContatoScreen from "./screens/ContatoScreen";
 import MoviesScreen from "./screens/MoviesScreen";
 import MovieViewScreen from "./screens/MovieViewScreen";
+import ContactScreen from "./screens/ContactScreen";
 
 /* Neste arquivo há a configuração central do App, junto do sistema de navegação que coordenará 
  * o fluxo entre telas. Estou utilizando o componente StackNavigator para armazenar e indicar cada
@@ -150,7 +149,7 @@ export default function App() {
             <Tab.Screen name="SqlTab" component={SqlNavigator} options={{ tabBarLabel: "SQLite" }} />
             <Tab.Screen name="MoviesTab" component={MoviesNavigator} options={{ tabBarLabel: "Movies" }} />
             <Tab.Screen name="AsyncTab" component={AsyncNavigator} options={{ tabBarLabel: "Async" }} />
-            <Tab.Screen name="Contato" component={ContatoScreen} options={{ tabBarLabel: "Contato" }} />
+            <Tab.Screen name="Contato" component={ContactScreen} options={{ tabBarLabel: "Contato" }} />
             <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: "Home" }} />
           </Tab.Navigator>
         </NavigationContainer>

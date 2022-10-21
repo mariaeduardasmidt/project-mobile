@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import { Button } from "react-native-paper";
 
-export default function DetalhesScreen({ navigation }) {
+export default function DetailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={{ fontSize: 21, marginBottom: 16 }}>

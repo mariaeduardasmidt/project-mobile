@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import { Button } from "react-native-paper";
 
-export default function ContatoScreen({ navigation }) {
+export default function ContactScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={{ fontSize: 21, marginBottom: 9 }}> Ligue já! </Text>

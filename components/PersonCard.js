@@ -2,7 +2,7 @@ import { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Button } from "react-native-paper";
 
-export default function CardPessoa() {
+export default function PersonCard() {
   const [pessoa, setPessoa] = useState({
     nome: "Maria Eduarda",
     sobrenome: "Smidt",
@@ -14,7 +14,7 @@ export default function CardPessoa() {
   console.log("pessoa =>", pessoa);
 
   return (
-    <View style={styles.cardPessoa}>
+    <View style={styles.personCard}>
       <Text style={styles.pessoaLabel}>
         Nome: {pessoa.nome} {pessoa.sobrenome}
       </Text>
@@ -57,7 +57,7 @@ export default function CardPessoa() {
 }
 
 const styles = StyleSheet.create({
-  cardPessoa: {
+  personCard: {
     padding: 16,
     borderWidth: 2,
     borderColor: "blue",

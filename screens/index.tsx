@@ -18,20 +18,20 @@ export function Home() {
 
     function handleBookRemove(name: string) {
       Alert.alert('Remover',
-        `Remover o livro ${name}?`, [
-    {
-      text: 'Sim', onPress: () => setBooks(prevState =>
-        prevState.filter(
-          book => book !== name
-        )
-      )
-    },
-    {
-      text: 'Não',
+        `Deseja remover o livro "${name}"?`, [
+      {
+        text: 'Não',
         style: 'cancel'
-    }
-      ])
-    }
+      },
+      {
+        text: 'Sim', onPress: () => setBooks(prevState =>
+          prevState.filter(
+            book => book !== name
+          )
+        )
+      }
+        ])
+      }
 
     return (
       <View style={styles.container}>
@@ -45,7 +45,7 @@ export function Home() {
             <TextInput
               style={styles.input}
               placeholder='Nome do livro'
-              placeholderTextColor='#6B6B6B'
+              placeholderTextColor='#fff'
               onChangeText={setBookName}
               value={bookName}
             />

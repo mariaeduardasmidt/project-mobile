@@ -1,15 +1,12 @@
-import { Card, Button } from "react-native-paper";
+import { Card } from "react-native-paper";
 
-export default function KittenCard({ image, title, children, buttonLabel = "Clique aqui", buttonPress, ...props }) {
+export default function KittenCard({ image, title, titleStyle, children, buttonLabel, buttonPress, ...props }) {
   return (
     <Card {...props}>
       {image && <Card.Cover source={{ uri: image }} />}
-      <Card.Title title={title} />
+      <Card.Title title={title} titleStyle={titleStyle} />
       {children && <Card.Content>{children}</Card.Content>}
       <Card.Actions>
-        <Button mode="contained" onPress={buttonPress}>
-          {buttonLabel}
-        </Button>
       </Card.Actions>
     </Card>
   );

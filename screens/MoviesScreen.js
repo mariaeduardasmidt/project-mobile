@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { StyleSheet, TouchableHighlight, PixelRatio, FlatList, Image, View, Text } from "react-native";
+import { TouchableHighlight, FlatList, Image, View, Text } from "react-native";
 import { Searchbar, ActivityIndicator } from "react-native-paper";
 
 import { styles } from './styles';

@@ -9,6 +9,7 @@ import AsyncHomeScreen from "./screens/AsyncHomeScreen";
 import SqlHomeScreen from "./screens/SqlHomeScreen";
 import SqlAddScreen from "./screens/SqlAddScreen";
 
+import Reviews from "./screens/Reviews";
 import { Home } from "./screens";
 import MoviesScreen from "./screens/MoviesScreen";
 import MovieViewScreen from "./screens/MovieViewScreen";
@@ -89,8 +90,8 @@ function tabScreenOptions({ route }) {
     tabBarIcon: ({ focused, color, size }) => {
       let iconName;
 
-      if (route.name === "AsyncHome") {
-        iconName = focused ? "account-circle" : "account-circle-outline";
+      if (route.name === "Reviews") {
+        iconName = focused ? "comment-bookmark" : "comment-bookmark-outline";
       }
       else if (route.name === "Home") {
         iconName = focused ? "star" : "star-outline";
@@ -111,7 +112,7 @@ export default function App() {
         <Tab.Navigator screenOptions={tabScreenOptions}>
           <Tab.Screen name ="Home" component={Home} options={{ tabBarShowLabel: false}} />
           <Tab.Screen name="MoviesScreen" component={MoviesNavigator} options={{ tabBarShowLabel: false}} />
-          <Tab.Screen name="AsyncHome" component={AsyncHomeScreen} options={{ tabBarShowLabel: false}} />
+          <Tab.Screen name="Reviews" component={Reviews} options={{ tabBarShowLabel: false}} />
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />

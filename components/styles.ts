@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     width: '100%',
-    backgroundColor: '#98c1d9',
+    backgroundColor: '#8b2f13',
     borderRadius: 5,
     flexDirection: 'row',
     alignItems: 'center',
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 5,
-    backgroundColor: '#293241',
+    backgroundColor: '#0a0a0a',
     alignItems: 'center',
     justifyContent: 'center'
   },

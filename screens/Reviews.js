@@ -14,7 +14,7 @@ export default function Reviews() {
           Reviews
         </Text>
         <Text style={styles.listSubtitle}>
-          Veja o que estão comentando sobre os últimos lançamentos.
+          Veja o que estão comentando sobre seus últimos filmes vistos.
         </Text>
       </View>
 

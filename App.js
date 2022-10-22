@@ -92,12 +92,15 @@ function tabScreenOptions({ route }) {
 
       if (route.name === "Reviews") {
         iconName = focused ? "comment-bookmark" : "comment-bookmark-outline";
+        color = "#0a0a0a"; 
       }
       else if (route.name === "Home") {
         iconName = focused ? "star" : "star-outline";
+        color = "#0a0a0a"; 
       }
       else if (route.name === "MoviesScreen") {
         iconName = focused ? "movie" : "movie-outline";
+        color = "#0a0a0a"; 
       }
 
       return <MaterialCommunityIcons name={iconName} size={size} color={color} />;

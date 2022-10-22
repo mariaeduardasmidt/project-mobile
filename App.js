@@ -113,9 +113,9 @@ export default function App() {
     <PaperProvider>
       <NavigationContainer>
         <Tab.Navigator screenOptions={tabScreenOptions}>
-          <Tab.Screen name ="Home" component={Home} options={{ tabBarShowLabel: false}} />
-          <Tab.Screen name="MoviesScreen" component={MoviesNavigator} options={{ tabBarShowLabel: false}} />
-          <Tab.Screen name="Reviews" component={Reviews} options={{ tabBarShowLabel: false}} />
+          <Tab.Screen name = "Home" component={ Home } options={{ tabBarShowLabel: false }} />
+          <Tab.Screen name = "MoviesScreen" component={ MoviesNavigator } options={{ tabBarShowLabel: false }} />
+          <Tab.Screen name = "Reviews" component={ Reviews } options={{ tabBarShowLabel: false }} />
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />

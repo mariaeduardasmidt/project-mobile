@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { StyleSheet, TouchableOpacity, Keyboard, View, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";

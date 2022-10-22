@@ -1,12 +1,9 @@
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, ScrollView, View } from "react-native";
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, 
+  ScrollView, View } from "react-native";
 
-export default function CustomKeyboardAvoidingView({
-  children,
-  style,
-  containerProps,
-  scrollEnabled = true,
-  ...props
-}) {
+export default function CustomKeyboardAvoidingView({ children, style, containerProps,
+  scrollEnabled = true, ...props }) {
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : null}

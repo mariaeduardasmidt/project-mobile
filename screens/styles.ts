@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     marginTop: 17,
     marginBottom: 16,
   },
-  filmeItem: {
+  movieItem: {
     flexDirection: "row",
     paddingVertical: 12,
     paddingHorizontal: 16,

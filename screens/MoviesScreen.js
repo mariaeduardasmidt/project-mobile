@@ -9,7 +9,7 @@ function FilmeItem({ item, onPress }) {
 
   return (
     <TouchableHighlight underlayColor="#dfdfdf" onPress={onPress}>
-      <View style={styles.filmeItem}>
+      <View style={styles.movieItem}>
         {temPoster ? (
           <Image resizeMode="cover" source={{ uri: item.Poster }} style={{ width: 120, height: 172 }} />
         ) : (

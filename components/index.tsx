@@ -7,7 +7,7 @@ type Props = {
   onRemove: () => void;
 }
 
-export function Book({name, onRemove}: Props) {
+export function Movie({name, onRemove}: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>

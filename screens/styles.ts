@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { PixelRatio } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,11 +11,29 @@ export const styles = StyleSheet.create({
     color: '#1F1E25',
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 48
+    marginTop: 6
   },
   listSubtitle: {
     color: '#6B6B6B',
     fontSize: 16
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginTop: 17,
+    marginBottom: 16,
+  },
+  filmeItem: {
+    flexDirection: "row",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
+  rowSeparator: {
+    backgroundColor: "#cdcdcd",
+    height: 1 / PixelRatio.get(), /* Altura automática do separador. */
+  },
+  rowSeparatorHide: {
+    opacity: 0.0,
   },
   input: {
     flex: 1,

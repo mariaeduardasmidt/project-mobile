@@ -65,7 +65,7 @@ export default function SqlAddScreen({ navigation }) {
             <View style={styles.formContainer}>
               <MyTextInput
                 autoCorrect={false}
-                label="Adicione o livro"
+                label="Adicione o filme"
                 onChangeText={handleChange("name")}
                 onBlur={handleBlur("name")}
                 value={values.name}

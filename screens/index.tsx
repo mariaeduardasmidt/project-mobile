@@ -1,32 +1,32 @@
 import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, FlatList, Alert } from "react-native";
-import { Book } from "../components";
+import { Movie } from "../components";
 import { styles } from './styles';
 
 export function Home() {
-  const [books, setBooks] = useState<string[]>([])
-  const [bookName, setBookName] = useState('')
+  const [movies, setMovies] = useState<string[]>([])
+  const [movieName, setMovieName] = useState('')
 
-    function handleBookAdd() {
-      if (books.includes(bookName)) {
+    function handleMovieAdd() {
+      if (movies.includes(movieName)) {
         return Alert.alert('Registro já existe',
-          'Já existe um livro com esse nome na lista!')
+          'Já existe um filme com esse nome na lista!')
       }
-        setBooks(preveState => [...preveState, bookName])
-        setBookName('')
+        setMovies(preveState => [...preveState, movieName])
+        setMovieName('')
     }
 
-    function handleBookRemove(name: string) {
+    function handleMovieRemove(name: string) {
       Alert.alert('Remover',
-        `Deseja remover o livro "${name}"?`, [
+        `Deseja remover o filme "${name}"?`, [
       {
         text: 'Não',
         style: 'cancel'
       },
       {
-        text: 'Sim', onPress: () => setBooks(prevState =>
+        text: 'Sim', onPress: () => setMovies (prevState =>
           prevState.filter(
-            book => book !== name
+            movie => movie !== name
           )
         )
       }
@@ -36,20 +36,20 @@ export function Home() {
     return (
       <View style={styles.container}>
         <Text style={styles.listTitle}>
-          Lista de desejos
+          Watchlist
         </Text>
         <Text style={styles.listSubtitle}>
-          Adicione livros desejados.
+          Adicione filmes que deseja ver.
         </Text>
           <View style={styles.form}>
             <TextInput
               style={styles.input}
-              placeholder='Nome do livro'
+              placeholder='Nome do filme'
               placeholderTextColor='#fff'
-              onChangeText={setBookName}
-              value={bookName}
+              onChangeText={setMovieName}
+              value={movieName}
             />
-            <TouchableOpacity style={styles.button} onPress={handleBookAdd}>
+            <TouchableOpacity style={styles.button} onPress={handleMovieAdd}>
               <Text style={styles.buttonText}>
                 +
               </Text>
@@ -57,19 +57,19 @@ export function Home() {
           </View>
 
         <FlatList
-          data={books}
+          data={movies}
           keyExtractor={item => item}
           renderItem={({ item }) => (
-            <Book
+            <Movie
               key={item}
               name={item}
-              onRemove={() => handleBookRemove(item)}
+              onRemove={() => handleMovieRemove(item)}
             />
           )}
           showsHorizontalScrollIndicator={false}
           ListEmptyComponent={() => (
             <Text style={styles.listEmptyText}>
-              Lista de desejos vazia, adicione livros à lista.
+              Watchlist vazia, adicione filmes desejados.
             </Text>
           )}
         />

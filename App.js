@@ -12,7 +12,6 @@ import SqlAddScreen from "./screens/SqlAddScreen";
 import { Home } from "./screens";
 import MoviesScreen from "./screens/MoviesScreen";
 import MovieViewScreen from "./screens/MovieViewScreen";
-import ContactScreen from "./screens/ContactScreen";
 
 const StackAsync = createNativeStackNavigator();
 
@@ -54,7 +53,7 @@ function SqlNavigator() {
         name="SqlAdd"
         component={SqlAddScreen}
         options={{
-          title: "Livros desejados",
+          title: "Ex sql",
         }}
       />
     </StackSql.Navigator>
@@ -69,9 +68,7 @@ function MoviesNavigator() {
       <StackMovies.Screen
         name="Movies"
         component={MoviesScreen}
-        options={({ navigation }) => ({
-          title: "Ex fetch",
-        })}
+        options={{ headerShown: false}} 
       />
       <StackMovies.Screen
         name="MovieView"
@@ -92,23 +89,14 @@ function tabScreenOptions({ route }) {
     tabBarIcon: ({ focused, color, size }) => {
       let iconName;
 
-      if (route.name === "AsyncTab") {
-        iconName = focused ? "database-arrow-down" : "database-arrow-down-outline";
-      }
-      else if (route.name === "SqlHome") {
-        iconName = focused ? "database-plus" : "database-plus-outline";
-      }
-      else if (route.name === "SqlAdd") {
-        iconName = focused ? "movie-settings" : "movie-settings-outline";
-      }
-      else if (route.name === "Contato") {
-        iconName = focused ? "database-plus" : "database-plus-outline";
+      if (route.name === "AsyncHome") {
+        iconName = focused ? "account-circle" : "account-circle-outline";
       }
       else if (route.name === "Home") {
-        iconName = focused ? "folder-heart" : "folder-heart-outline";
+        iconName = focused ? "star" : "star-outline";
       }
-      else if (route.name === "Detalhes") {
-        iconName = focused ? "database-plus" : "database-plus-outline";
+      else if (route.name === "MoviesScreen") {
+        iconName = focused ? "movie" : "movie-outline";
       }
 
       return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
@@ -122,9 +110,8 @@ export default function App() {
       <NavigationContainer>
         <Tab.Navigator screenOptions={tabScreenOptions}>
           <Tab.Screen name ="Home" component={Home} options={{ tabBarShowLabel: false}} />
+          <Tab.Screen name="MoviesScreen" component={MoviesNavigator} options={{ tabBarShowLabel: false}} />
           <Tab.Screen name="AsyncHome" component={AsyncHomeScreen} options={{ tabBarShowLabel: false}} />
-          <Tab.Screen name="SqlAdd" component={SqlAddScreen} options={{ tabBarShowLabel: false}} />
-          <Tab.Screen name="Contato" component={ContactScreen} options={{ tabBarShowLabel: false}} />
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />

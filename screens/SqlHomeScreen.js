@@ -89,7 +89,7 @@ export default function SqlHomeScreen({ route, navigation }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.textInfo}>
-          LISTA DE DESEJOS
+          Lista
         </Text>
       </View>
       <FlatList

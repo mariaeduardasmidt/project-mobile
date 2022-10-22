@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { StyleSheet, TouchableHighlight, PixelRatio, FlatList, Image, View, Text } from "react-native";
 import { Searchbar, ActivityIndicator } from "react-native-paper";
 
+import { styles } from './styles';
+
 function FilmeItem({ item, onPress }) {
   const temPoster = !!item.Poster && item.Poster !== "N/A";
 
@@ -39,7 +41,7 @@ function ListEmptyFilmes({ onEmptyPress }) {
 export default function MoviesScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [lista, setLista] = useState([]);
-  const [busca, setBusca] = useState("spider man");
+  const [busca, setBusca] = useState("Halloween");
 
   async function carregaListaFilmes() {
 
@@ -66,14 +68,16 @@ export default function MoviesScreen({ navigation }) {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <View style={{ paddingHorizontal: 16, paddingBottom: 12 }}>
-        <Text style={styles.title}>Lista de Movies</Text>
-        <Text style={{ fontSize: 13, lineHeight: 18, marginBottom: 18 }}>
-          Neste exemplo estamos usando uma API online de filmes com acesso gratuito (omdbapi) a ideia aqui é buscar por
-          filmes através de seu título.
+      <View style={styles.container}>
+        <View style={{ paddingHorizontal: 10, paddingBottom: 12 }}>
+        <Text style={styles.listTitle}>
+          Filmes
+        </Text>
+        <Text style={styles.listSubtitle}>
+          Pesquise filmes que deseja ver.
         </Text>
         <Searchbar
+          style={{ marginTop: 20, borderRadius: 8 }}
           autoCorrect={false}
           placeholder="Encontre um Filme"
           onChangeText={text => setBusca(text)}
@@ -81,7 +85,7 @@ export default function MoviesScreen({ navigation }) {
           onSubmitEditing={() => carregaListaFilmes()}
           value={busca}
         />
-      </View>
+        </View>
       {!!loading ? (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
           <ActivityIndicator animating={true} size="large" />
@@ -103,27 +107,3 @@ export default function MoviesScreen({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginTop: 17,
-    marginBottom: 16,
-  },
-  filmeItem: {
-    flexDirection: "row",
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-  },
-  rowSeparator: {
-    backgroundColor: "#cdcdcd",
-    height: 1 / PixelRatio.get(), /* Altura automática do separador. */
-  },
-  rowSeparatorHide: {
-    opacity: 0.0,
-  },
-});

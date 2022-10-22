@@ -6,30 +6,14 @@ export default function MovieViewScreen({ route, navigation }) {
   const [loading, setLoading] = useState(true);
   const [filme, setFilme] = useState(null);
 
-  /* Sempre que a lista de filmes entra aqui, recebemos um parâmetro com o 'id' do filme que queremos
-   * exibir. */
-
   const { imdbID } = route.params;
-
-  /* Após o filme estar 'preenchido' com os dados resgatados da API, podemos validar se é um filme com poster. */
-
   const temPoster = !!filme?.Poster && filme?.Poster !== "N/A";
 
   async function carregaFilme() {
-
-    /* Antes de iniciarmos a comunicação com o servidor, iremos marcar como 'carregando'. */
-
     setLoading(true);
 
     try {
-
-      /* A função 'fetch' é responsável por estabelecermos uma conexão com o servidor. Ao final de seu retorno 
-       * recebemos na variável 'response' os detalhes sobre o download. Nesta resposta, podemos convertê-la
-       * para um formato compreensível para o JS, utilizando outra função '.json()'. */
-
       const response = await fetch("https://www.omdbapi.com/?i=" + imdbID + "&apikey=1cd66749");
-
-      /* Traduz para o 'JSON'. */
 
       const filme = await response.json();
       setFilme(filme);

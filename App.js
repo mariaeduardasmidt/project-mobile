@@ -1,65 +1,14 @@
 import { StatusBar } from "react-native";
-import { Provider as PaperProvider, IconButton } from "react-native-paper";
+import { Provider as PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-import AsyncHomeScreen from "./screens/AsyncHomeScreen";
-import SqlHomeScreen from "./screens/SqlHomeScreen";
-import SqlAddScreen from "./screens/SqlAddScreen";
-
 import Reviews from "./screens/Reviews";
 import { Home } from "./screens";
 import MoviesScreen from "./screens/MoviesScreen";
 import MovieViewScreen from "./screens/MovieViewScreen";
-
-const StackAsync = createNativeStackNavigator();
-
-function AsyncNavigator() {
-  return (
-    <StackAsync.Navigator initialRouteName="AsyncHome">
-      <StackAsync.Screen
-        name="AsyncHome"
-        component={AsyncHomeScreen}
-        options={{
-          title: "Ex Async Storage",
-        }}
-      />
-    </StackAsync.Navigator>
-  );
-}
-
-const StackSql = createNativeStackNavigator();
-
-function SqlNavigator() {
-  return (
-    <StackSql.Navigator initialRouteName="SqlHome">
-      <StackSql.Screen
-        name="SqlHome"
-        component={SqlHomeScreen}
-        options={({ navigation }) => ({
-          title: "Ex expo-sqlite",
-          headerRight: () => (
-            <IconButton
-              style={{ marginTop: 0, marginRight: -12 }}
-              icon="plus-circle"
-              onPress={() => navigation.navigate("SqlAdd")}
-              size={26}
-            />
-          ),
-        })}
-      />
-      <StackSql.Screen
-        name="SqlAdd"
-        component={SqlAddScreen}
-        options={{
-          title: "Ex sql",
-        }}
-      />
-    </StackSql.Navigator>
-  );
-}
 
 const StackMovies = createNativeStackNavigator();
 
